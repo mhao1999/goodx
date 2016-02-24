@@ -1,22 +1,20 @@
 package com.goodx.configuration;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.Filter;
 import javax.sql.DataSource;
 
-import org.apache.shiro.authc.AuthenticationListener;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
-import org.apache.shiro.authc.pam.ModularRealmAuthenticator;
 import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.apache.shiro.realm.jdbc.JdbcRealm;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.filter.authc.AnonymousFilter;
-import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
+import org.apache.shiro.web.filter.authc.AuthenticationFilter;
 import org.apache.shiro.web.filter.authc.LogoutFilter;
+import org.apache.shiro.web.filter.authc.PassThruAuthenticationFilter;
 import org.apache.shiro.web.filter.authc.UserFilter;
 import org.apache.shiro.web.filter.authz.RolesAuthorizationFilter;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
@@ -28,7 +26,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
 
-import com.goodx.security.GoodXAuthenticationListener;
 import com.goodx.security.GoodXRealm;
 import com.goodx.services.GoodXUserService;
 
@@ -48,7 +45,7 @@ public class GoodXWebSecurityConfig {
 	public ShiroFilterFactoryBean shiroFilter() {
 		ShiroFilterFactoryBean shiroFilter = new ShiroFilterFactoryBean();
 		Map<String, String> filterChainDefinitionMapping = new HashMap<String, String>(); 
-		filterChainDefinitionMapping.put("/login.jsp", "authc");
+		filterChainDefinitionMapping.put("/login", "authc");
 		filterChainDefinitionMapping.put("/logout", "logout");
 		filterChainDefinitionMapping.put("/**", "anon");
 		shiroFilter.setFilterChainDefinitionMap(filterChainDefinitionMapping);
@@ -60,8 +57,9 @@ public class GoodXWebSecurityConfig {
 		
 		Map<String, Filter> filters = new HashMap<>();
 		filters.put("anon", new AnonymousFilter());
-		FormAuthenticationFilter authenticationFilter = new FormAuthenticationFilter();
-		authenticationFilter.setLoginUrl("/login.jsp");
+		//AuthenticationFilter authenticationFilter = new FormAuthenticationFilter();
+		AuthenticationFilter authenticationFilter = new PassThruAuthenticationFilter();
+		authenticationFilter.setLoginUrl("/login");
 		authenticationFilter.setSuccessUrl("/home");
 		
 		filters.put("authc", authenticationFilter);
@@ -76,17 +74,16 @@ public class GoodXWebSecurityConfig {
 		return shiroFilter;
 	}
 	
-	@SuppressWarnings("serial")
 	@Bean(name = "securityManager")
 	public DefaultWebSecurityManager securityManager() {
 		DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
 		securityManager.setRealm(jdbcRealm());
 
-		ModularRealmAuthenticator authenticator = new ModularRealmAuthenticator();
+/*		ModularRealmAuthenticator authenticator = new ModularRealmAuthenticator();
 		authenticator.setAuthenticationListeners(new ArrayList<AuthenticationListener>(){{
 			add(new GoodXAuthenticationListener());
 			}});
-		securityManager.setAuthenticator(authenticator);
+		securityManager.setAuthenticator(authenticator);*/
 		return securityManager;
 	}
 	

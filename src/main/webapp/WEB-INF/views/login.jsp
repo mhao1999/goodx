@@ -87,11 +87,11 @@
 			<div id="signin" class="floatleft righthalf"
 				data-ng-show="isSignin()">
 				<form name="loginform" style="margin-left: 80px;"
-					novalidate="novalidate" action="" method="post">
+					novalidate="novalidate" data-ng-submit="queryUser(signinForm)">
 					<div class="well">
 						<div class="form-group">
 							<label for="emailAddress">邮 箱:</label> <input type="email"
-								class="form-control" id="emailAddress" name="username" value=""
+								class="form-control" id="emailAddress" name="emailAddress" value=""
 								data-ng-model="emailAddress" required="required" />
 						</div>
 						<div class="form-group">

@@ -37,6 +37,7 @@ dependencies {
     compile "commons-collections:commons-collections:3.2"
 	compile "org.hibernate:hibernate-core:$hibernateVersion"
 	compile "org.mybatis:mybatis-spring:$mybatisSpringVersion"
+	compile "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
 	compile ("org.mybatis:mybatis:$mybatisVersion") {
 		exclude module: 'slf4j-api'
 	}

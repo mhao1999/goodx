@@ -22,8 +22,8 @@ angular.module('goodxApp', [ 'ngRoute' ])
     };
 
 	$scope.createUser = function(signupForm) {
-		var passmd5 = md5($scope.password + $scope.emailAddress);
-		var confmd5 = md5($scope.confirmPassword + $scope.emailAddress);
+		var passmd5 = $scope.password;
+		var confmd5 = $scope.confirmPassword;
 		
 		if (passmd5 === confmd5)
 		{
@@ -46,15 +46,15 @@ angular.module('goodxApp', [ 'ngRoute' ])
 	}
 	
 	$scope.queryUser = function(signinForm) {
-		var passmd5 = md5($scope.password + $scope.emailAddress);
 		
 		$http({
 			method : 'POST',
-			url : 'signin',
+			url : 'login',
 			
 			data : {
-				emailAddress : $scope.emailAddress,
-				password : passmd5,
+				userName : $scope.emailAddress,
+				password : $scope.password,
+				rememberMe : $scope.rememberMe
 			}
 		}).success(function(data) {
 			$scope.dish = data;

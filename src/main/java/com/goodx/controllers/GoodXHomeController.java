@@ -1,12 +1,18 @@
 package com.goodx.controllers;
 
+
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.crypto.RandomNumberGenerator;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;
 import org.apache.shiro.crypto.hash.Sha256Hash;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -29,8 +35,21 @@ public class GoodXHomeController {
 		return "login";
 	}
 	
-	@RequestMapping(value="login", method=RequestMethod.POST)
-	public String login() {
+	@RequestMapping(
+			value="login", 
+			method=RequestMethod.POST,
+			consumes="application/json")
+	public String login(@RequestBody GoodXUser user) {
+		try {
+			Subject currentUser = SecurityUtils.getSubject();
+			currentUser.login(new UsernamePasswordToken(user.getUserName(), user.getPassword()));
+			// WebUtils.redirectToSavedRequest(request, response, null);
+			return null;
+		} catch (AuthenticationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return "home";
 	}
 	

@@ -17,7 +17,7 @@
 			<ul class="nav nav-pills navbar-right">
 				<li role="presentation"><a href="#">发布</a></li>
 				<li role="presentation"><a href="#">注册</a></li>
-				<li role="presentation"><a href="<c:url value='/login.jsp' />">登录</a></li>
+				<li role="presentation"><a href="<c:url value='/login' />">登录</a></li>
 				<li role="presentation"><a href="#">QQ登录</a></li>
 				<li role="presentation"><a href="#">微信登录</a></li>
 			</ul>
