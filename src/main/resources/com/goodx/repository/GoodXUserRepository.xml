@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.goodx.repository.GoodXUserRepository">
+	<cache/>
+	
+	<select id="getByEmail" parameterType="String" resultType="GoodXUser">
+		select
+			id 			as "id",
+			username	as "userName",
+			email		as "email",
+			password	as "password",
+			salt		as "salt"
+		from goodx_users
+		where email = #{email}
+	</select>
+	
+	<select id="getById" parameterType="int" resultType="GoodXUser">
+		select
+			id 			as "id",
+			username	as "userName",
+			email		as "email",
+			password	as "password",
+			salt		as "salt"
+		from goodx_users
+		where email = #{id}
+	</select>
+	
+	<insert id="add" parameterType="GoodXUser" useGeneratedKeys="true" keyProperty="id">
+		insert into goodx_users (username, email, password, salt)
+		values (#{userName}, #{email}, #{password}, #{salt})
+	</insert>
+	
+	<update id="delete" parameterType="int">
+		update goodx_users set
+			deleted			= 1
+		where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="GoodXUser">
+		update goodx_users set
+			username			= #{userName},
+			email				= #{email},
+			password			= #{password},
+			gender				= #{gender},
+			user_active			= #{userActive},
+			user_topics			= #{userTopics},
+			user_replies		= #{userReplies},
+			deleted				= #{deleted}
+		where id = {id}
+	</update>
+	
+	<update id="setActive" parameterType="int">
+		update goodx_users set
+			user_active		= 1
+		where id = #{id}
+	</update>
+	
+	<update id="incrementTopics" parameterType="int">
+		update goodx_users set
+			user_topics		= user_topics + 1
+		where id = #{id}
+	</update>
+	
+	<update id="incrementReplies" parameterType="int">
+		update goodx_users set
+			user_replies 	= user_replies + 1
+		where id = #{id}
+	</update>
+	
+	<update id="decrementReplies" parameterType="int">
+		update goodx_users set
+			user_replies	= user_replies - 1
+		where id = #{id}
+	</update>
+	
+	<select id="getTotalUsers" resultType="int">
+		select count(1) from goodx_users
+	</select>
+	
+	<update id="updateUserName" parameterType="map">
+		update goodx_user set
+			username		= #{userName}
+		where id = #{id}
+	</update>
+	
+	<select id="getUserNameByEmail" parameterType="String" resultType="String">
+		select username 
+		from goodx_users
+		where email = #{email}
+	</select>
+</mapper>

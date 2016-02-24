@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.goodx.repository.GoodXTopicRepository">
+	<cache/>
+	
+	<select id="getTopicById" parameterType="int" resultType="GoodXTopic">
+		select 
+			id					as "id",
+			topic_title			as "topicTitle",
+			topic_uid 			as "topicUID",
+			topic_views			as "topicViews",
+			topic_replies		as "topicReplies",
+			topic_collections	as "topicCollections",
+			topic_likes			as "topicLikes",
+			topic_time			as "topicTime",
+			topic_last_reply_id as "topicLastReplyId",
+			user_id				as "userId"
+		from goodx_topics
+		where id = #{id}
+	</select>
+	
+	<select id="getByUserByLimit" parameterType="map" resultType="GoodXTopic">
+		select
+			id					as "id",
+			topic_title			as "topicTitle",
+			topic_uid 			as "topicUID",
+			topic_views			as "topicViews",
+			topic_replies		as "topicReplies",
+			topic_collections	as "topicCollections",
+			topic_likes			as "topicLikes",
+			topic_time			as "topicTime",
+			topic_last_reply_id as "topicLastReplyId",
+			user_id				as "userId"
+		from goodx_topics
+		where user_id = #{userId}
+		order by topic_last_reply_id DESC
+		LIMIT #{startFrom}, #{count}
+	</select>
+	
+	<select id="countUserTopics" parameterType="int" resultType="int">
+		select count(1) from goodx_topics where user_id = #{userId}
+	</select>
+	
+	<update id="update" parameterType="GoodXTopic" flushCache="true">
+		update goodx_topics set
+			topic_title			= #{topicTitle},
+			topic_uid			= #{topicUID},
+			topic_views			= #{topicViews},
+			topic_replies		= #{topicReplies},
+			topic_collections	= #{topicCollections},
+			topic_likes			= #{topicLikes},
+			topic_time			= #{topicTime},
+			topic_last_reply_id	= #{topicLastReplyId}
+		where id = #{id}
+	</update>
+	
+	<insert id="addNew" parameterType="GoodXTopic" flushCache="true" useGeneratedKeys="true" keyProperty="id">
+		insert into goodx_topics (topic_title, topic_uid, topic_views, topic_replies, topic_collections, topic_likes, topic_time, topic_last_reply_id, user_id)
+		values (#{topicTitle}, #{topicUID}, #{topicViews}, #{topicReplies}, #{topicCollections}, #{topicLikes}, #{topicTime}, #{topicLastReplyId}, #{userId})
+	</insert>
+	
+	<update id="incrementTopicViews" parameterType="GoodXTopic">
+		update goodx_topics set
+			topic_views		= topic_views + 1
+		where id = #{id}
+	</update>
+	
+	<update id="incrementTopicCollections" parameterType="GoodXTopic">
+		update goodx_topics set
+			topic_collections	= topic_collections + 1
+		where id = #{id}
+	</update>
+	
+	<update id="incrementTopicLikes" parameterType="GoodXTopic">
+		update goodx_topics set
+			topic_likes			= topic_likes + 1
+		where id = #{id}
+	</update>
+	
+	<update id="incrementTopicReplies" parameterType="GoodXTopic">
+		update goodx_topics set
+			topic_replies 		= topic_replies + 1
+		where id = #{id}
+	</update>
+	
+	<update id="decrementTopicReplies" parameterType="GoodXTopic">
+		update goodx_topics set
+			topic_replies 		= topic_replies - 1
+		where id = #{id}
+	</update>
+	
+	<select id="getTotalSteps" resultType="int">
+		select count(1) from goodx_steps where topic_id = #{id}
+	</select>
+	
+	<select id="getTotalReplies" resultType="int">
+		select topic_replies from goodx_topics where id = #{id}
+	</select>
+</mapper>

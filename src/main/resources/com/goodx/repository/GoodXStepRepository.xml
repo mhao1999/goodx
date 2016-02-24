@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.goodx.repository.GoodXStepRepository">
+	<cache/>
+	
+	<select id="getById" parameterType="int" resultType="GoodXStep">
+		select 
+			id 				as "id",
+			step_content	as "content",
+			step_order		as "order",
+			topic_id		as "topicId"
+		from goodx_steps
+		where id = #{id}
+	</select>
+	
+	<insert id="addNew" parameterType="GoodXStep" useGeneratedKeys="true" keyProperty="id">
+		insert into goodx_steps (step_content, step_order, topic_id)
+		values (#{content}, #{order}, #{topicId})
+	</insert>
+	
+	<delete id="delete" parameterType="int">
+		delete from goodx_steps
+		where id = #{id}
+	</delete>
+	
+	<update id="update" parameterType="GoodXStep">
+		update goodx_steps set
+			step_content 	= #{content},
+			step_order		= #{order},
+			topic_id		= #{topicId}
+		where id = #{id}
+	</update>
+	
+	<update id="updateOrder" parameterType="map">
+		update goodx_steps set
+			step_order		= #{order}
+		where id = #{id}
+	</update>
+</mapper>

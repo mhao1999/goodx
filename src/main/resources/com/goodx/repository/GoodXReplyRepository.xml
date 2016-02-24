@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.goodx.repository.GoodXReplyRepository">
+	<cache/>
+	
+	<select id="getById" parameterType="int">
+		select 
+			id				as "id",
+			reply_content	as "content",
+			reply_time		as "replyTime",
+			reply_type		as "replyType",
+			step_id			as "stepId"
+		from goodx_replies
+		where id = #{id}
+	</select>
+	
+	<insert id="addNew" parameterType="GoodXReply" useGeneratedKeys="true" keyProperty="id">
+		insert into goodx_replies (reply_content, reply_time, reply_type, step_id)
+		values(#{content}, #{replyTime}, #{replyType}, #{stepId})
+	</insert>
+	
+	<delete id="delete" parameterType="int">
+		delete from goodx_replies
+		where id = #{id}
+	</delete>
+	
+	<update id="update" parameterType="GoodXReply">
+		update goodx_replies set
+			reply_content 		= #{content},
+			reply_time			= #{replyTime},
+			reply_type			= #{replyType},
+			step_id				= #{stepId}
+		where id = #{id}
+	</update>
+</mapper>
