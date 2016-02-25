@@ -1,10 +1,12 @@
 package com.goodx.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.goodx.models.GoodXStep;
 import com.goodx.repository.GoodXStepRepository;
 
+@Service("stepService")
 public class GoodXStepServiceImpl implements GoodXStepService {
 
 	private GoodXStepRepository repository;

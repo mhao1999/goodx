@@ -28,16 +28,20 @@ configurations.all {
 
 dependencies {
 	compile "org.springframework:spring-core:$springVersion"
+	compile "org.springframework:spring-context-support:$springVersion"
 	compile "ch.qos.logback:logback-classic:$logbackVersion"
 	compile "org.slf4j:jcl-over-slf4j:$slf4jVersion"
 	compile "org.springframework:spring-web:$springVersion"
 	compile "org.springframework:spring-webmvc:$springVersion"
 	compile "org.springframework:spring-tx:$springVersion"
 	compile "org.springframework:spring-orm:$springVersion"
-    compile "commons-collections:commons-collections:3.2"
+    compile "commons-collections:commons-collections:3.2.1"
+	compile "org.apache.velocity:velocity:$velocityVersion"
+	compile "javax.mail:mail:$mailVersion"
 	compile "org.hibernate:hibernate-core:$hibernateVersion"
 	compile "org.mybatis:mybatis-spring:$mybatisSpringVersion"
 	compile "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
+	compile "org.codehaus.jackson:jackson-mapper-asl:$jacksonaslVersion"
 	compile ("org.mybatis:mybatis:$mybatisVersion") {
 		exclude module: 'slf4j-api'
 	}

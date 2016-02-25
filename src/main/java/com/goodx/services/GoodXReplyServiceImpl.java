@@ -1,10 +1,12 @@
 package com.goodx.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.goodx.models.GoodXReply;
 import com.goodx.repository.GoodXReplyRepository;
 
+@Service("replyService")
 public class GoodXReplyServiceImpl implements GoodXReplyService {
 	
 	private GoodXReplyRepository repository;

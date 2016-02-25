@@ -6,6 +6,7 @@ angular.module('goodxApp', [ 'ngRoute' ])
 	$scope.userName = "";
 	$scope.emailAddress = "";
 	$scope.password = "";
+	$scope.rememberMe = "";
 	$scope.confirmPassword = "";
 	$scope.feedback = {};
 	
@@ -22,10 +23,10 @@ angular.module('goodxApp', [ 'ngRoute' ])
     };
 
 	$scope.createUser = function(signupForm) {
-		var passmd5 = $scope.password;
-		var confmd5 = $scope.confirmPassword;
+		var pass = $scope.password;
+		var conf = $scope.confirmPassword;
 		
-		if (passmd5 === confmd5)
+		if (pass === conf)
 		{
 			$http({
 				method : 'POST',
@@ -33,9 +34,8 @@ angular.module('goodxApp', [ 'ngRoute' ])
 
 				data : {
 					userName : $scope.userName,
-					emailAddress : $scope.emailAddress,
-					password : passmd5,
-					confirmPassword : confmd5
+					email : $scope.emailAddress,
+					password : pass,
 				}
 			}).success(function(data) {
 				$scope.feedback.result = data;
@@ -57,7 +57,7 @@ angular.module('goodxApp', [ 'ngRoute' ])
 				rememberMe : $scope.rememberMe
 			}
 		}).success(function(data) {
-			$scope.dish = data;
+			$scope.feedback.result = data;
 		})
 	}
 });

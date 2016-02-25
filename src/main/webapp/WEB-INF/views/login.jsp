@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>WEB SITE - 登录</title>
 	<link type="text/css" rel="stylesheet" href="<c:url value='/resources/css/lib/bootstrap.min.css' />"></link>
 	<link type="text/css" rel="stylesheet" href="<c:url value='/resources/css/lib/bootstrap-theme.min.css' />"></link>
