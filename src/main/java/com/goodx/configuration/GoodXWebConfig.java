@@ -40,7 +40,7 @@ public class GoodXWebConfig extends WebMvcConfigurationSupport {
 	}
 	
 	@Bean
-	MappingJackson2HttpMessageConverter converter() {
+	public MappingJackson2HttpMessageConverter converter() {
 		MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
 		return converter;
 	}

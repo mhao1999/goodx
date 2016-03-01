@@ -53,6 +53,10 @@
 					novalidate="novalidate" data-ng-submit="createUser(signupForm)">
 					<div class="well">
 						<div class="form-group">
+							<label class="radio-inline"><input type="radio" class="form-control" value="m" data-ng-model="gender">男</label>
+							<label class="radio-inline"><input type="radio" class="form-control" value="f" data-ng-model="gender">女</label>
+						</div>
+						<div class="form-group">
 							<label for="userName">用 户 名:</label> <input type="text"
 								class="form-control" id="userName" name="userName" value=""
 								data-ng-model="userName" required="required" />

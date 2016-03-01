@@ -6,6 +6,7 @@ angular.module('goodxApp', [ 'ngRoute' ])
 	$scope.userName = "";
 	$scope.emailAddress = "";
 	$scope.password = "";
+	$scope.gender= "";
 	$scope.rememberMe = "";
 	$scope.confirmPassword = "";
 	$scope.feedback = {};
@@ -36,6 +37,7 @@ angular.module('goodxApp', [ 'ngRoute' ])
 					userName : $scope.userName,
 					email : $scope.emailAddress,
 					password : pass,
+					gender : $scope.gender
 				}
 			}).success(function(data) {
 				$scope.feedback.result = data;

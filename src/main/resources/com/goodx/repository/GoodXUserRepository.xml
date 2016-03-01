@@ -9,7 +9,8 @@
 			username	as "userName",
 			email		as "email",
 			password	as "password",
-			salt		as "salt"
+			salt		as "salt",
+			gender		as "gender"
 		from goodx_users
 		where email = #{email}
 	</select>
@@ -20,14 +21,15 @@
 			username	as "userName",
 			email		as "email",
 			password	as "password",
-			salt		as "salt"
+			salt		as "salt",
+			gender		as "gender"
 		from goodx_users
 		where email = #{id}
 	</select>
 	
 	<insert id="add" parameterType="GoodXUser" useGeneratedKeys="true" keyProperty="id">
-		insert into goodx_users (username, email, password, salt)
-		values (#{userName}, #{email}, #{password}, #{salt})
+		insert into goodx_users (username, email, password, salt, gender)
+		values (#{userName}, #{email}, #{password}, #{salt}, #{gender})
 	</insert>
 	
 	<update id="delete" parameterType="int">

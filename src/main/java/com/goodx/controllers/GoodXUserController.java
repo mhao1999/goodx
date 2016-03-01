@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.goodx.helper.GoodXLoginResult;
+import com.goodx.message.GoodXMailService;
 import com.goodx.models.GoodXUser;
 import com.goodx.services.GoodXUserService;
 
@@ -24,7 +25,10 @@ import com.goodx.services.GoodXUserService;
 public class GoodXUserController {
 	
 	@Autowired
-	GoodXUserService service;
+	GoodXUserService userService;
+	
+	@Autowired
+	GoodXMailService mailService;
 	
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String showLoginForm() {
@@ -55,19 +59,20 @@ public class GoodXUserController {
 	}
 	
 	@RequestMapping(value="/signup", method=RequestMethod.POST)
-	public String register(HttpServletRequest request) {
+	public String register(@RequestBody GoodXUser user) {
 		
-		GoodXUser user = new GoodXUser();
-		user.setUserName(request.getParameter("email"));
-		user.setEmail(request.getParameter("email"));
 		RandomNumberGenerator rng = new SecureRandomNumberGenerator();
 		Object salt = rng.nextBytes();
+		String passWord = user.getPassword();		
 		
-		String hashedPasswordBase64 = new Sha256Hash(request.getParameter("p"), salt, 1024).toBase64();
+		String hashedPasswordBase64 = new Sha256Hash(passWord, salt, 1024).toBase64();
 		user.setPassword(hashedPasswordBase64);
 		user.setSalt(salt.toString());
+				
+		this.userService.add(user);
 		
-		service.add(user);
+		this.mailService.sendActivationMail(user);
+		
 		return "home";
 	}
 }
