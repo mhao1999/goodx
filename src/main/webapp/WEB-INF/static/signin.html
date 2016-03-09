@@ -1,0 +1,26 @@
+
+<form name="loginform" novalidate="novalidate" data-ng-submit="signinUser(signinForm)">
+	<div class="form-group">
+		<label for="emailAddress">邮 箱:</label> <input type="email"
+			class="form-control" id="emailAddress" name="emailAddress" value=""
+			data-ng-model="form.emailAddress" required="required" />
+	</div>
+	<div class="form-group">
+		<label for="password">密 码:</label> <input type="password"
+			class="form-control" id="password" name="password" value=""
+			data-ng-model="form.password" required="required" />
+	</div>
+	<div class="checkbox">
+		<label>
+			<input type="checkbox" id="rememberMe" name="rememberMe" value=""
+				data-ng-model="form.rememberMe" required="required" />
+		</label>
+	</div>
+	<button type="submit" class="btn btn-primary btn-block">登录</button>
+	<div>
+		<p>
+			还没有账户？请<a data-ng-click="setMode(2)">注册<i
+				class="icon-circle-arrow-right"></i></a>
+		</p>
+	</div>
+</form>

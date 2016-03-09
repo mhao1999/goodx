@@ -1,0 +1,77 @@
+
+<div id="signup_container" data-ng-controller="userController">
+	<div class="center" data-ng-hide="feedback.result">
+		<div style="height: 40px;"></div>
+		<div class="floatleft lefthalf"></div>
+		<div id="signup" class="floatleft righthalf" data-ng-show="isSignup()">
+			<form name="signupForm" style="margin-left: 80px;"
+				novalidate="novalidate" data-ng-submit="createUser(signupForm)">
+				<div class="well">
+					<div class="form-group">
+						<label class="radio-inline"><input type="radio" value="m"
+							data-ng-model="gender">男</label> <label class="radio-inline"><input
+							type="radio" value="f" data-ng-model="gender">女</label>
+					</div>
+					<div class="form-group">
+						<label for="userName">用 户 名:</label> <input type="text"
+							class="form-control" id="userName" name="userName" value=""
+							data-ng-model="userName" required="required" />
+					</div>
+					<div class="form-group">
+						<label for="emailAddress">邮 箱:</label> <input type="email"
+							class="form-control" id="emailAddress" name="emailAddress"
+							value="" data-ng-model="emailAddress" required="required" />
+					</div>
+					<div class="form-group">
+						<label for="password">输入密码:</label> <input type="password"
+							class="form-control" id="password" name="password" value=""
+							data-ng-model="password" required="required" />
+					</div>
+					<div class="form-group">
+						<label for="confirmPassword">确认密码:</label> <input type="password"
+							class="form-control" id="confirmPassword" name="confirmPassword"
+							value="" data-ng-model="confirmPassword" required="required" />
+					</div>
+					<div class="error" data-ng-show="showValidation">密码不一致！</div>
+
+					<button type="submit" class="btn btn-primary btn-block">注册</button>
+					<div>
+						<p>
+							已有账户？请<a data-ng-click="setMode(1)">登录<i
+								class="icon-circle-arrow-right"></i></a>
+						</p>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div id="signin" class="floatleft righthalf" data-ng-show="isSignin()">
+			<form name="loginform" style="margin-left: 80px;"
+				novalidate="novalidate" data-ng-submit="queryUser(signinForm)">
+				<div class="well">
+					<div class="form-group">
+						<label for="emailAddress">邮 箱:</label> <input type="email"
+							class="form-control" id="emailAddress" name="emailAddress"
+							value="" data-ng-model="emailAddress" required="required" />
+					</div>
+					<div class="form-group">
+						<label for="password">密 码:</label> <input type="password"
+							class="form-control" id="password" name="password" value=""
+							data-ng-model="password" required="required" />
+					</div>
+					<div class="form-group">
+						<label for="rememberMe">记住我</label> <input type="checkbox"
+							class="form-control" id="rememberMe" name="rememberMe" value=""
+							data-ng-model="rememberMe" required="required" />
+					</div>
+					<button type="submit" class="btn btn-primary btn-block">登录</button>
+					<div>
+						<p>
+							还没有账户？请<a data-ng-click="setMode(2)">注册<i
+								class="icon-circle-arrow-right"></i></a>
+						</p>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

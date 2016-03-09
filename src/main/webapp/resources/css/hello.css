@@ -1,0 +1,27 @@
+@CHARSET "UTF-8";
+
+.center {
+	width: 935px;
+	margin: 0 auto;
+}
+
+.lefthalf {
+	width: 475px;
+	height: 400px;
+}
+
+.righthalf {
+	width: 420px;
+}
+
+.floatleft {
+	float: left;
+}
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	visibility: hidden;
+	clear: both;
+}

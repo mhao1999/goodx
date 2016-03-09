@@ -1,7 +1,5 @@
 package com.goodx.controllers;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -59,7 +57,16 @@ public class GoodXUserController {
 	}
 	
 	@RequestMapping(value="/signup", method=RequestMethod.POST)
-	public String register(@RequestBody GoodXUser user) {
+	public @ResponseBody GoodXLoginResult register(@RequestBody GoodXUser user) {
+		
+		GoodXUser existUser = this.userService.getByEmail(user.getEmail());
+		if (existUser != null)
+		{
+			Subject currentUser = SecurityUtils.getSubject();
+			currentUser.login(new UsernamePasswordToken(user.getUserName(), user.getPassword()));
+			// WebUtils.redirectToSavedRequest(request, response, null);
+			return new GoodXLoginResult(true, "success");
+		}
 		
 		RandomNumberGenerator rng = new SecureRandomNumberGenerator();
 		Object salt = rng.nextBytes();
@@ -73,6 +80,6 @@ public class GoodXUserController {
 		
 		this.mailService.sendActivationMail(user);
 		
-		return "home";
+		return new GoodXLoginResult(true, "success");
 	}
 }
