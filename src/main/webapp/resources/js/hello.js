@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('goodxApp', [ 'ngRoute', 'ngDialog' ])
+angular.module('goodxApp', [ 'ngRoute', 'ngDialog', 'ngAnimate', 'ngDragDrop' ])
 .controller("userController", function($scope, $http, $location, ngDialog) {
 	$scope.form = {
 		mode : 2,
@@ -17,6 +17,10 @@ angular.module('goodxApp', [ 'ngRoute', 'ngDialog' ])
 		message : null		
 	};
 	
+	$scope.showHide = {
+		write : false
+	};
+	
 	$scope.setMode = function (newValue) {
         $scope.form.mode = newValue;
     };
@@ -27,6 +31,10 @@ angular.module('goodxApp', [ 'ngRoute', 'ngDialog' ])
 
     $scope.isSignin = function () {
         return $scope.form.mode == 1;
+    };
+    
+    $scope.switchToWrite = function() {
+    	$scope.showHide.write = true;
     };
 
 	$scope.createUser = function(signupForm) {
@@ -67,6 +75,7 @@ angular.module('goodxApp', [ 'ngRoute', 'ngDialog' ])
 			}
 		}).success(function(data) {
 			$scope.feedback = data;
+			ngDialog.close();
 		})
 	}
 	
