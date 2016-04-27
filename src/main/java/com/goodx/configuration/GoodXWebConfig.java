@@ -10,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.accept.ContentNegotiationManager;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
@@ -44,6 +45,13 @@ public class GoodXWebConfig extends WebMvcConfigurationSupport {
 	public MappingJackson2HttpMessageConverter converter() {
 		MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
 		return converter;
+	}
+	
+	@Bean
+	public CommonsMultipartResolver multipartResolver() {
+		CommonsMultipartResolver resolver = new CommonsMultipartResolver();
+		resolver.setDefaultEncoding("utf-8");
+		return resolver;
 	}
 	
 	// https://spring.io/blog/2013/05/11/content-negotiation-using-spring-mvc

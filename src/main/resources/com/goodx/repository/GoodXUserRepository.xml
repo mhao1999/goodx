@@ -32,6 +32,11 @@
 		values (#{userName}, #{email}, #{password}, #{salt}, #{gender})
 	</insert>
 	
+	<insert id="setRole" parameterType="map">
+		insert into goodx_user_roles (rolename, email)
+		values (#{roleName}, #{email})
+	</insert>
+	
 	<update id="delete" parameterType="int">
 		update goodx_users set
 			deleted			= 1

@@ -55,8 +55,15 @@
 	</update>
 	
 	<insert id="addNew" parameterType="GoodXTopic" flushCache="true" useGeneratedKeys="true" keyProperty="id">
-		insert into goodx_topics (topic_title, topic_uid, topic_views, topic_replies, topic_collections, topic_likes, topic_time, topic_last_reply_id, user_id)
-		values (#{topicTitle}, #{topicUID}, #{topicViews}, #{topicReplies}, #{topicCollections}, #{topicLikes}, #{topicTime}, #{topicLastReplyId}, #{userId})
+		insert into goodx_topics (topic_title, topic_uid, topic_views, topic_replies, topic_collections, topic_likes, topic_time, user_id)
+		values (#{topicTitle}, #{topicUID}, #{topicViews}, #{topicReplies}, #{topicCollections}, #{topicLikes}, #{topicTime}, #{userId})
+	</insert>
+	
+	<insert id="addSteps" useGeneratedKeys="true" keyProperty="id">
+		insert into goodx_steps (step_imgurl, step_content, step_order, topic_id) values
+		<foreach item="item" collection="list" separator=",">
+			(#{item.imgUrl}, #{item.content}, #{item.order}, #{item.topicId})
+		</foreach>
 	</insert>
 	
 	<update id="incrementTopicViews" parameterType="GoodXTopic">

@@ -1,6 +1,25 @@
 'use strict';
 
-angular.module('goodxApp', [ 'ngRoute', 'ngDialog', 'ngAnimate', 'ngDragDrop' ])
+angular.module('goodxApp', [ 'ngRoute', 'ngDialog', 'ngAnimate', 'ngDragDrop', 'ngFileUpload' ])
+.config(function($routeProvider, $locationProvider) {
+	
+	$locationProvider.html5Mode({
+		enabled: true,
+		requireBase: true
+	});
+	
+	$routeProvider.when("/list", {
+		templateUrl: "static/postList.html"
+	});
+	
+	$routeProvider.when("/create", {
+		templateUrl: "static/create.html"
+	});
+	
+	$routeProvider.otherwise({
+		templateUrl: "static/postList.html"
+	});
+})
 .controller("userController", function($scope, $http, $location, ngDialog) {
 	$scope.form = {
 		mode : 2,
@@ -34,7 +53,8 @@ angular.module('goodxApp', [ 'ngRoute', 'ngDialog', 'ngAnimate', 'ngDragDrop' ])
     };
     
     $scope.switchToWrite = function() {
-    	$scope.showHide.write = true;
+    	// $scope.showHide.write = true;
+    	$location.path("/create");
     };
 
 	$scope.createUser = function(signupForm) {

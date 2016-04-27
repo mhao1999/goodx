@@ -38,6 +38,9 @@ dependencies {
     compile "commons-collections:commons-collections:3.2.1"
 	compile "org.apache.velocity:velocity:$velocityVersion"
 	compile "javax.mail:mail:$mailVersion"
+	compile "org.elasticsearch:elasticsearch:$elasticsearchVersion"
+	compile "com.qiniu:qiniu-java-sdk:7.0.+"
+	compile "commons-fileupload:commons-fileupload:$fileUploadVersion"
 	compile "org.hibernate:hibernate-core:$hibernateVersion"
 	compile "org.mybatis:mybatis-spring:$mybatisSpringVersion"
 	compile "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
@@ -51,6 +54,7 @@ dependencies {
 	compile ("org.apache.shiro:shiro-core:$shiroVersion") {
 		exclude module: 'slf4j-api'
 	}
+	compile "org.apache.shiro:shiro-ehcache:$shiroEhCache"
 	compile "org.apache.shiro:shiro-web:$shiroVersion"
 	compile "org.apache.shiro:shiro-aspectj:$shiroVersion"
 	compile "org.apache.shiro:shiro-spring:$shiroVersion"

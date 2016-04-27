@@ -24,9 +24,10 @@ body {
 	border: 1px solid red;
 }
 
+/*
 .vthumbnail {
-	/*height: 50px;*/
-	/*width: 50px;*/
+	height: 50px;
+	width: 50px;
 	text-align: center;
 	padding-top: 0px;
 	cursor: pointer;
@@ -35,6 +36,11 @@ body {
 	-webkit-transition: none;
 	transition: none;
 	float: none !important;
+}*/
+.vthumbnail {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	height: 150px;
 }
 
 .vthumbnail.ng-leave {
@@ -62,4 +68,93 @@ body {
 
 .vthumbnail.ng-enter.ng-enter-active {
 	top: 0px;
+}
+
+.stepContainer > div {
+	height: 80px;
+}
+
+.uil {
+	width: 140px;
+	float: left;
+}
+
+.uin {
+	width: 60px;
+	float: left;
+	/*overflow: hidden;*/
+}
+
+.numberCircle {
+	border-radius: 50%;
+	behavior: url(PIE.htc);
+	
+	width: 36px;
+    height: 36px;
+    padding: 8px;
+    
+    background: #fff;
+    border: 2px solid #666;
+    color: #666;
+    text-align: center;
+    
+    font: 32px Arial, sans-serif;
+}
+
+.uil, .uin, .uii, .uic {
+	position: relative;
+}
+
+.uii {
+	margin-right: 25px;
+	margin-left: 210px;
+	/*overflow: hidden;*/
+}
+
+.uic {
+	float: right;
+	top: -80px;
+}
+
+.verti {
+	display: block;
+	cursor: pointer;
+	margin: 5px 5px 5px 5px;
+	background-color: #aaaaaa;
+}
+
+.info {
+  position: relative;
+    height: 100%;
+}
+tr .progress{
+  width: 96%;
+  display: inline-block;
+}
+tr .progress-bar {
+    min-height: 20px;
+    float: none;
+}
+tr .progress, tr .progress div {
+  height: 20px;
+}
+
+tr .progress .chunk-status {
+    position: absolute;
+    left: 24px;
+    top: 0;
+}
+tr .progressCancel{
+  display: inline-block;
+  float: right;
+  position: relative;
+  z-index: 100;
+  color: #333;
+  text-decoration: none;
+}
+.status {
+  position: absolute;
+  width: 100%;
+  top:0;
+  left: 24px;
 }

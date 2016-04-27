@@ -1,0 +1,42 @@
+
+<div class="stepContainer" step-template>
+	<!-- div class="uil" ng-controller="uploadCtrl" type="file"
+		ngf-select="uploadPic(imgs.picFile)" ng-model="imgs.picFile"
+		name="file" ngf-accept="'image/*'" ngf-max-size="2MB" required
+		ngf-model-invalid="errorFile">upload</div-->
+	<!-- div ng-controller="uploadCtrl" class="uil" type="file" ngf-select="uploadPic(imgs.picFile)" 
+		ng-model="imgs.picFile" name="file" ngf-accept="'image/*'" 
+		ngf-max-size="20MB" mgf-min-height="100" ngf-resize="{width:140, height:80px}"
+		style="text-align: center; vertical-align: center; background-color: #cccccc;">
+		<p style="line-height: 80px;">上传照片</p>
+	</div-->
+	<div class="uil" style="text-align: center; vertical-align: center; background-color: #cccccc;">
+		<span class="foo" style="line-height: 80px;">上传照片</span>
+	</div>
+	<div class="uploading" style="display: none">
+		<table class="table table-striped table-hover text-left">
+			<thead>
+				<tr>
+					<th class="col-md-2">文件名称</th>
+					<th class="col-md-2">大小</th>
+					<th class="col-md-4">细节</th>
+				</tr>
+			</thead>
+			<tbody id="{{progressId}}"></tbody>
+		</table>
+	</div>
+	<div class="uin" style="padding-top: 10px;">
+		<div class="numberCircle"
+			style="box-sizing: content-box; vertical-align: middle;">{{item.order}}</div>
+	</div>
+	<div class="uii">
+		<textarea class="form-control" style="border-width: 1px;" rows="4" data-ng-model="item.content"></textarea>
+	</div>
+	<div class="uic">
+		<span data-ng-click="moveUp($index)" class="verti glyphicon glyphicon-chevron-up"></span>
+		<span data-ng-click="moveDown($index)" class="verti glyphicon glyphicon-chevron-down"></span>
+		<span data-ng-click="addWidget($index)" class="verti glyphicon glyphicon-plus"></span>
+		<span data-ng-click="removeWidget($index)" class="verti glyphicon glyphicon-remove"></span>
+	</div>
+</div>
+

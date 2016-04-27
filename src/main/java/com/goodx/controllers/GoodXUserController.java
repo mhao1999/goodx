@@ -40,7 +40,9 @@ public class GoodXUserController {
 	public @ResponseBody GoodXLoginResult login(@RequestBody GoodXUser user) {
 		try {
 			Subject currentUser = SecurityUtils.getSubject();
-			currentUser.login(new UsernamePasswordToken(user.getUserName(), user.getPassword()));
+			UsernamePasswordToken token = new UsernamePasswordToken(user.getUserName(), user.getPassword());
+			token.setRememberMe(user.isRememberMe());
+			currentUser.login(token);
 			// WebUtils.redirectToSavedRequest(request, response, null);
 			return new GoodXLoginResult(true, "success");
 		} catch (AuthenticationException e) {

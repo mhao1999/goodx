@@ -4,8 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.goodx.models.GoodXNewTopic;
+import com.goodx.models.GoodXStep;
 import com.goodx.models.GoodXTopic;
+import com.goodx.models.GoodXUser;
 import com.goodx.repository.GoodXTopicRepository;
 
 @Service("topicService")
@@ -51,6 +55,26 @@ public class GoodXTopicServiceImpl implements GoodXTopicService {
 		this.repository.addNew(topic);
 		
 		return topic.getId();
+	}
+	
+	@Override 
+	@Transactional
+	public void addNew(GoodXUser user, GoodXNewTopic newTopic) {
+		GoodXTopic topic = new GoodXTopic();
+		topic.setUserId(user.getId());
+		topic.setTopicTitle(newTopic.getSubject());
+		java.util.Date currentDate = new java.util.Date();
+		topic.setTopicTime(new java.sql.Date(currentDate.getTime()));
+		
+		this.repository.addNew(topic);
+		
+		int topicId = topic.getId();
+		
+		for (GoodXStep step : newTopic.getSteps()) {
+			step.setTopicId(topicId);
+		}
+		
+		this.repository.addSteps(newTopic.getSteps());
 	}
 	
 	@Override

@@ -16,6 +16,8 @@ public interface GoodXUserService {
 	
 	void setActive(int id);
 	
+	void setRole(String roleName, String email);
+	
 	void incrementTopics(int id);
 	
 	void incrementReplies(int id);

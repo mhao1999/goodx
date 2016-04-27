@@ -7,6 +7,7 @@ import javax.servlet.Filter;
 import javax.sql.DataSource;
 
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
+import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.apache.shiro.realm.jdbc.JdbcRealm;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
@@ -78,6 +79,8 @@ public class GoodXWebSecurityConfig {
 	public DefaultWebSecurityManager securityManager() {
 		DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
 		securityManager.setRealm(jdbcRealm());
+		EhCacheManager cm = new EhCacheManager();
+		securityManager.setCacheManager(cm);
 
 /*		ModularRealmAuthenticator authenticator = new ModularRealmAuthenticator();
 		authenticator.setAuthenticationListeners(new ArrayList<AuthenticationListener>(){{
@@ -95,6 +98,7 @@ public class GoodXWebSecurityConfig {
 		credentialsMatcher.setHashAlgorithmName(Sha256Hash.ALGORITHM_NAME);
 		credentialsMatcher.setStoredCredentialsHexEncoded(false);
 		credentialsMatcher.setHashIterations(1024);
+		realm.setPermissionsLookupEnabled(true);
 		realm.setCredentialsMatcher(credentialsMatcher);
 		realm.setDataSource(dataSource);
 		realm.setUserRolesQuery("select rolename from goodx_user_roles where email = ?");

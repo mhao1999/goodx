@@ -2,6 +2,8 @@ package com.goodx.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.goodx.repository.GoodXUserRepository;
 
 import com.goodx.models.GoodXUser;
@@ -29,8 +31,10 @@ public class GoodXUserServiceImpl implements GoodXUserService {
 	}
 	
 	@Override
+	@Transactional
 	public void add(GoodXUser user) {
 		this.repository.add(user);
+		this.repository.setRole("user", user.getEmail());
 	}
 
 	@Override
@@ -46,6 +50,11 @@ public class GoodXUserServiceImpl implements GoodXUserService {
 	@Override
 	public void setActive(int id) {
 		this.repository.setActive(id);
+	}
+	
+	@Override
+	public void setRole(String roleName, String email) {
+		this.repository.setRole(roleName, email);
 	}
 	
 	@Override

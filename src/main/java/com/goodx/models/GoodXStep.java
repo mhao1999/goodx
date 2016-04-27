@@ -8,11 +8,17 @@ public class GoodXStep implements Serializable {
 	
 	private int id;
 	
+	private String imgUrl;
+	
 	private String content;
 	
 	private byte order;
 	
 	private int topicId;
+	
+	public GoodXStep() {
+		
+	}
 	
 	public int getId() {
 		return this.id;
@@ -20,6 +26,14 @@ public class GoodXStep implements Serializable {
 	
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public String getImgUrl() {
+		return this.imgUrl;
+	}
+	
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
 	}
 	
 	public String getContent() {

@@ -2,7 +2,9 @@ package com.goodx.services;
 
 import java.util.List;
 
+import com.goodx.models.GoodXNewTopic;
 import com.goodx.models.GoodXTopic;
+import com.goodx.models.GoodXUser;
 
 public interface GoodXTopicService {
 	
@@ -17,6 +19,8 @@ public interface GoodXTopicService {
 	void update(GoodXTopic topic);
 	
 	int addNew(GoodXTopic topic);
+	
+	void addNew(GoodXUser user, GoodXNewTopic newTopic);
 	
 	void incrementTopicViews(int id);
 	

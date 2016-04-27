@@ -6,6 +6,7 @@
 	<select id="getById" parameterType="int" resultType="GoodXStep">
 		select 
 			id 				as "id",
+			step_imgurl		as "imgUrl",
 			step_content	as "content",
 			step_order		as "order",
 			topic_id		as "topicId"
@@ -14,8 +15,8 @@
 	</select>
 	
 	<insert id="addNew" parameterType="GoodXStep" useGeneratedKeys="true" keyProperty="id">
-		insert into goodx_steps (step_content, step_order, topic_id)
-		values (#{content}, #{order}, #{topicId})
+		insert into goodx_steps (step_imgurl, step_content, step_order, topic_id)
+		values (#{imgUrl}, #{content}, #{order}, #{topicId})
 	</insert>
 	
 	<delete id="delete" parameterType="int">
@@ -25,6 +26,7 @@
 	
 	<update id="update" parameterType="GoodXStep">
 		update goodx_steps set
+			step_imgurl		= #{imgUrl},
 			step_content 	= #{content},
 			step_order		= #{order},
 			topic_id		= #{topicId}

@@ -23,6 +23,8 @@ public class GoodXUser implements Serializable {
 	private int userReplies;
 	
 	private byte deleted;
+	
+	private boolean rememberMe;
 
 	private String salt;
 	
@@ -96,6 +98,14 @@ public class GoodXUser implements Serializable {
 	
 	public void setDeleted(byte deleted) {
 		this.deleted = deleted;
+	}
+	
+	public boolean isRememberMe() {
+		return this.rememberMe;
+	}
+	
+	public void setRememberMe(boolean rememberMe) {
+		this.rememberMe = rememberMe;
 	}
 	
 	public String getSalt() {

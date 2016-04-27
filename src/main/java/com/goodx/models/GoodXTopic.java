@@ -3,6 +3,8 @@ package com.goodx.models;
 import java.io.Serializable;
 import java.sql.Date;
 
+import org.elasticsearch.common.inject.spi.PrivateElements;
+
 public class GoodXTopic implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -23,7 +25,20 @@ public class GoodXTopic implements Serializable {
 	
 	private Date topicTime;
 	
+	private Integer topicFirstReplyId;
+	
+	private Integer topicLastReplyId;
+	
 	private Integer userId;
+	
+	public GoodXTopic() {
+		this.id = 0;
+		this.topicUID = "";
+		this.topicViews = 0;
+		this.topicReplies = 0;
+		this.topicCollections = 0;
+		this.topicLikes = 0;
+	}
 	
 	public int getId() {
 		return this.id;
@@ -87,6 +102,22 @@ public class GoodXTopic implements Serializable {
 	
 	public void setTopicTime(Date topicTime) {
 		this.topicTime = topicTime;
+	}
+	
+	public Integer getTopicFirstReplyId() {
+		return this.topicFirstReplyId;
+	}
+	
+	public void setTopicFirstReplyId(Integer topicFirstReplyId) {
+		this.topicFirstReplyId = topicFirstReplyId;
+	}
+	
+	public Integer getTopicLastReplyId() {
+		return this.topicLastReplyId;
+	}
+	
+	public void setTopicLastReplyId(Integer topicLastReplyId) {
+		this.topicLastReplyId = topicLastReplyId;
 	}
 	
 	public int getUserId() {

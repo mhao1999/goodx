@@ -1,0 +1,32 @@
+
+<div class="lefthalf">
+	<!-- data-ng-show="showHide.write == true"-->
+	<form name="publish" id="publish" data-ng-submit="addNew()">
+		<div class="form-group">
+			<label for="title">标题：</label> <input type="text"
+				class="form-control" id="title" required
+				data-ng-model="data.subject">
+		</div>
+
+		<div class="ng-cloak">
+			<p>步骤：</p>
+			<ul class="list-unstyled">
+				<li class="vthumbnail" step-display
+					data-ng-repeat="item in data.steps" data-drop="true"
+					data-drag="true" data-ng-model="data.steps"
+					data-jqyoui-droppable="{index: {{$index}}, onDrop: 'dropCallback'}"
+					data-jqyoui-draggable="{index: {{$index}}, insertInline: true, direction:'jqyouiDirection'}"
+					data-jqyoui-options="{revert: 'invalid'}"
+					data-direction="{{item.jqyouiDirection}}"></li>
+			</ul>
+		</div>
+		<div>
+			<button class="btn btn-default btn-block" data-ng-click="addStep()">添加步骤</button>
+		</div>
+		<button type="submit" class="btn btn-primary btn-block"
+			data-ng-disabled="publish.$invalid">提交</button>
+	</form>
+
+	<!-- do test for qiniu upload -->
+
+</div>

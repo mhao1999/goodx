@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.goodx.models.GoodXStep;
 import com.goodx.models.GoodXTopic;
 
 
@@ -20,6 +21,8 @@ public interface GoodXTopicRepository {
 	void update(GoodXTopic topic);
 	
 	int addNew(GoodXTopic topic);
+	
+	int addSteps(List<GoodXStep> steps);
 	
 	void incrementTopicViews(int id);
 	
