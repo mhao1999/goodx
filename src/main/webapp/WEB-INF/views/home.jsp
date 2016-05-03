@@ -62,10 +62,13 @@
 	<script type="text/javascript" src="<c:url value='/resources/js/lib/angular-dragdrop/angular-dragdrop.js' />"></script>
 	<script type="text/javascript" src="<c:url value='/resources/js/lib/ng-file-upload/ng-file-upload.min.js' />"></script>
 	<script type="text/javascript" src="<c:url value='/resources/js/lib/ng-file-upload/ng-file-upload-shim.min.js' />"></script>
-	<script type="text/javascript" src="<c:url value='/resources/js/hello.js' />"></script>
-	<script type="text/javascript" src="<c:url value='/resources/js/publish.js' />"></script>
+	<script type="text/javascript" src="<c:url value='/resources/js/controllers/user.js' />"></script>
+	<script type="text/javascript" src="<c:url value='/resources/js/controllers/publish.js' />"></script>
+	<script type="text/javascript" src="<c:url value='/resources/js/directives/stepDisplay.js' />"></script>
+	<script type="text/javascript" src="<c:url value='/resources/js/directives/stepTemplate.js' />"></script>
 	<script type="text/javascript" src="<c:url value='/resources/js/upload.js' />"></script>
-	<script type="text/javascript" src="<c:url value='/resources/js/list.js' />"></script>
-	<script type="text/javascript" src="<c:url value='/resources/js/post.js' />"></script>
+	<script type="text/javascript" src="<c:url value='/resources/js/controllers/list.js' />"></script>
+	<script type="text/javascript" src="<c:url value='/resources/js/controllers/post.js' />"></script>
+	<script type="text/javascript" src="<c:url value='/resources/js/directives/stepBlock.js' />"></script>
 </body>
 </html>
