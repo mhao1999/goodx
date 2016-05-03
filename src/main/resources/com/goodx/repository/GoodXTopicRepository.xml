@@ -3,6 +3,20 @@
 <mapper namespace="com.goodx.repository.GoodXTopicRepository">
 	<cache/>
 	
+	<resultMap type="GoodXNewTopic" id="detailTopicResultMap">
+		<constructor>
+			<idArg column="topic_id" javaType="_int"/>
+		</constructor>
+		
+		<result property="subject" column="topic_title"/>
+		<result property="userName" column="username" />
+		<collection property="steps" ofType="GoodXStep">
+			<id property="id" column="step_id"/>
+			<result property="imgUrl" column="step_imgurl"/>
+			<result property="content" column="step_content"/>
+		</collection>
+	</resultMap>
+	
 	<select id="getTopicById" parameterType="int" resultType="GoodXTopic">
 		select 
 			id					as "id",
@@ -17,6 +31,20 @@
 			user_id				as "userId"
 		from goodx_topics
 		where id = #{id}
+	</select>
+	
+	<select id="getTopicDetail" resultMap="detailTopicResultMap">
+		select 
+			t.id 				as topic_id,
+			t.topic_title,
+			u.username,
+			s.id 				as step_id,
+			s.step_imgurl,
+			s.step_content
+		from goodx_topics t
+			left outer join goodx_users u on t.user_id = u.id
+			left outer join goodx_steps s on t.id = s.topic_id
+		where t.id = #{id}
 	</select>
 	
 	<select id="getByUserByLimit" parameterType="map" resultType="GoodXTopic">

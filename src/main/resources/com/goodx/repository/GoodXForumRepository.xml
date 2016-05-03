@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.goodx.repository.GoodXForumRepository">
+	<cache/>
+	
+	<select id="getList" resultType="GoodXTopic">
+		select 
+			id 					as "id",
+			topic_title			as "topicTitle",
+			topic_uid 			as "topicUID",
+			topic_views			as "topicViews",
+			topic_replies		as "topicReplies",
+			topic_collections	as "topicCollections",
+			topic_likes			as "topicLikes",
+			topic_time			as "topicTime",
+			topic_last_reply_id as "topicLastReplyId",
+			user_id				as "userId"
+		from goodx_topics
+		order by topic_time DESC
+		LIMIT 10
+	</select>
+</mapper>

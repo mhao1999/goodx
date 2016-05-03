@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('goodxApp')
-.controller("publishController", function($scope, $http) {
+.controller("publishController", function($scope, $http, $location) {
 	
 	$scope.data = {
 			subject: null,
@@ -171,6 +171,8 @@ angular.module('goodxApp')
 									var domain = up.getOption('domain');
 									url = domain + encodeURI(res.key);
 								}
+								
+								scope.data.steps[scope.$index].imgUrl = encodeURI(res.key);
 								
 								var imageView = '?imageView2/1/w/140/h/80';
 

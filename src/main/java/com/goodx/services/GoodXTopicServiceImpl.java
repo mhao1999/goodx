@@ -28,6 +28,11 @@ public class GoodXTopicServiceImpl implements GoodXTopicService {
 		// TODO Auto-generated method stub
 		return this.repository.getTopicById(id);
 	}
+	
+	@Override
+	public GoodXNewTopic getTopicDetail(int id) {
+		return this.repository.getTopicDetail(id);
+	}
 
 	@Override
 	public List<GoodXTopic> getByUserByLimit(int userId, int startFrom, int count) {

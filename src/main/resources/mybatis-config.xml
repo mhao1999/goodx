@@ -9,5 +9,6 @@
 		<typeAlias alias="GoodXTopic" type="com.goodx.models.GoodXTopic"/>
 		<typeAlias alias="GoodXStep" type="com.goodx.models.GoodXStep"/>
 		<typeAlias alias="GoodXReply" type="com.goodx.models.GoodXReply"/>
+		<typeAlias alias="GoodXNewTopic" type="com.goodx.models.GoodXNewTopic"/>
 	</typeAliases>
 </configuration>

@@ -16,11 +16,20 @@ angular.module('goodxApp', [ 'ngRoute', 'ngDialog', 'ngAnimate', 'ngDragDrop', '
 		templateUrl: "static/create.html"
 	});
 	
+	$routeProvider.when("/detail", {
+		templateUrl: "static/postDetail.html"
+	});
+	
 	$routeProvider.otherwise({
 		templateUrl: "static/postList.html"
 	});
 })
 .controller("userController", function($scope, $http, $location, ngDialog) {
+	
+	$scope.currentPost = {
+		id : null	
+	};
+	
 	$scope.form = {
 		mode : 2,
 		userName : "",
@@ -39,6 +48,12 @@ angular.module('goodxApp', [ 'ngRoute', 'ngDialog', 'ngAnimate', 'ngDragDrop', '
 	$scope.showHide = {
 		write : false
 	};
+	
+	$scope.setCurrentPostId = function(id) {
+		$scope.currentPost.id = id;
+		
+		$location.path("/detail");
+	}
 	
 	$scope.setMode = function (newValue) {
         $scope.form.mode = newValue;

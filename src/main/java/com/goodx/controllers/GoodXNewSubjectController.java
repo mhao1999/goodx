@@ -69,7 +69,7 @@ public class GoodXNewSubjectController {
 	@RequestMapping(value="/publish", method=RequestMethod.POST)
 	public void createNewSubject(@RequestBody GoodXNewTopic newTopic) {
 		Subject currentUser = SecurityUtils.getSubject();
-		String strPrincipal = (String)currentUser.getPrincipal();
+
 		if (currentUser.isAuthenticated() && currentUser.isPermitted("user:create"))
 		{
 			GoodXUser user = this.userService.getByEmail((String)currentUser.getPrincipal());

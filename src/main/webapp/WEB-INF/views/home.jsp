@@ -36,7 +36,7 @@
 		</div>
 	</nav>
 	
-	<div class="container" data-ng-controller="publishController">
+	<div class="container">
 		<div class="row">
 			<div class="col-md-8">
 				<div ng-view></div>
@@ -65,5 +65,7 @@
 	<script type="text/javascript" src="<c:url value='/resources/js/hello.js' />"></script>
 	<script type="text/javascript" src="<c:url value='/resources/js/publish.js' />"></script>
 	<script type="text/javascript" src="<c:url value='/resources/js/upload.js' />"></script>
+	<script type="text/javascript" src="<c:url value='/resources/js/list.js' />"></script>
+	<script type="text/javascript" src="<c:url value='/resources/js/post.js' />"></script>
 </body>
 </html>

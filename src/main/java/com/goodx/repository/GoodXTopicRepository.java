@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.goodx.models.GoodXNewTopic;
 import com.goodx.models.GoodXStep;
 import com.goodx.models.GoodXTopic;
 
@@ -11,6 +12,8 @@ import com.goodx.models.GoodXTopic;
 public interface GoodXTopicRepository {
 	
 	GoodXTopic getTopicById(int id);
+	
+	GoodXNewTopic getTopicDetail(int id);
 	
 	List<GoodXTopic> getByUserByLimit(@Param("userId")int userId, @Param("startFrom")int startFrom, @Param("count")int count);
 	

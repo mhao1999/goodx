@@ -3,8 +3,6 @@ package com.goodx.models;
 import java.io.Serializable;
 import java.sql.Date;
 
-import org.elasticsearch.common.inject.spi.PrivateElements;
-
 public class GoodXTopic implements Serializable {
 	
 	private static final long serialVersionUID = 1L;

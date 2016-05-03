@@ -8,7 +8,11 @@ body {
 	margin-top:5px; 
 	margin-right:5px; 
 	margin-bottom:5px; 
-	margin-left:5px;}
+	margin-left:5px;
+}
+
+.stepBlock {
+	border-bottom: 1px solid #e0e0e0;
 }
 
 .clearfix:after {
@@ -157,4 +161,10 @@ tr .progressCancel{
   width: 100%;
   top:0;
   left: 24px;
+}
+
+.graph img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }

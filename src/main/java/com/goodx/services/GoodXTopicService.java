@@ -10,6 +10,8 @@ public interface GoodXTopicService {
 	
 	GoodXTopic getTopicById(int id);
 	
+	GoodXNewTopic getTopicDetail(int id);
+	
 	List<GoodXTopic>getByUserByLimit(int userId, int startFrom, int count);
 	
 	List<GoodXTopic> getRecentByLimit(int count); 
