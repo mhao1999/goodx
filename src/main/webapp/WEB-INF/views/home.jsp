@@ -8,6 +8,7 @@
 	<title>WEB SITE</title>
 	<link type="text/css" rel="stylesheet" href="<c:url value='/resources/libs/bootstrap/css/bootstrap.min.css' />"></link>
 	<link type="text/css" rel="stylesheet" href="<c:url value='/resources/libs/bootstrap/css/bootstrap-theme.min.css' />"></link>
+	<link type="text/css" rel="stylesheet" href="<c:url value='/resources/css/lib/ngDialog/ngDialog.css' />"></link>
 	<link type="text/css" rel="stylesheet" href="<c:url value='/resources/css/lib/ngDialog/ngDialog-theme-default.css' />"></link>
 	<link type="text/css" rel="stylesheet" href="<c:url value='/resources/css/lib/ngDialog/ngDialog-theme-plain.css' />"></link>
 	<link type="text/css" rel="stylesheet" href="<c:url value='/resources/css/lib/ngDialog/ngDialog-custom-width.css' />"></link>

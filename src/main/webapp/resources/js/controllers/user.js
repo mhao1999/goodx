@@ -114,9 +114,18 @@ angular.module('goodxApp', [ 'ngRoute', 'ngDialog', 'ngAnimate', 'ngDragDrop', '
 		})
 	}
 	
+	$scope.preCloseCallbackOnScope = function(value) {
+		if (value == "$document" || value == "$escape") {
+			return false;
+		}
+		
+		return true;
+	}
+	
 	$scope.openSignup = function() {
 		ngDialog.openConfirm({
 			template: 'static/signup.html',
+			preCloseCallback: 'preCloseCallbackOnScope',
 			scope: $scope
 		});
 	}
@@ -124,6 +133,7 @@ angular.module('goodxApp', [ 'ngRoute', 'ngDialog', 'ngAnimate', 'ngDragDrop', '
 	$scope.openSignin = function() {
 		ngDialog.open({
 			template: 'static/signin.html',
+			preCloseCallback: 'preCloseCallbackOnScope',
 			scope: $scope
 		});
 	}
