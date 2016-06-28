@@ -168,3 +168,10 @@ tr .progressCancel{
 	margin-left: auto;
 	margin-right: auto;
 }
+
+.topicList {
+	margin: 20pt 20pt 20pt 20pt;
+	height: 100px;
+	background-color: yellow;
+	box-shadow: 10px 10px 5px #888888;
+}

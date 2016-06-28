@@ -4,7 +4,7 @@
 'use strict';
 
 angular.module('goodxApp')
-.controller("publishController", function($scope, $http, $location) {
+.controller("publishController", function($scope, $http, $location, session) {
 	
 	$scope.data = {
 			subject: null,
@@ -92,6 +92,7 @@ angular.module('goodxApp')
 			'publish',
 			$scope.data
 		).success(function(data) {
+			session.addNew(data);
 			$location.path("list");
 		});
 	};

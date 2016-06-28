@@ -64,7 +64,7 @@ public class GoodXTopicServiceImpl implements GoodXTopicService {
 	
 	@Override 
 	@Transactional
-	public void addNew(GoodXUser user, GoodXNewTopic newTopic) {
+	public GoodXTopic addNew(GoodXUser user, GoodXNewTopic newTopic) {
 		GoodXTopic topic = new GoodXTopic();
 		topic.setUserId(user.getId());
 		topic.setTopicTitle(newTopic.getSubject());
@@ -80,6 +80,8 @@ public class GoodXTopicServiceImpl implements GoodXTopicService {
 		}
 		
 		this.repository.addSteps(newTopic.getSteps());
+		
+		return topic;
 	}
 	
 	@Override

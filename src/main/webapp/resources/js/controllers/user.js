@@ -110,6 +110,7 @@ angular.module('goodxApp', [ 'ngRoute', 'ngDialog', 'ngAnimate', 'ngDragDrop', '
 			}
 		}).success(function(data) {
 			$scope.feedback = data;
+			
 			ngDialog.close();
 		})
 	}
@@ -135,6 +136,22 @@ angular.module('goodxApp', [ 'ngRoute', 'ngDialog', 'ngAnimate', 'ngDragDrop', '
 			template: 'static/signin.html',
 			preCloseCallback: 'preCloseCallbackOnScope',
 			scope: $scope
+		});
+	}
+	
+	$scope.checkRememberMe = function() {
+		$http({
+			method : 'GET',
+			url : 'checkRememberMe'
+		}).success(function(data) {
+			$scope.feedback = data;
+		});
+	}
+	
+	$scope.logout = function() {
+		$http({
+			method : 'POST',
+			url : 'logout'
 		});
 	}
 });

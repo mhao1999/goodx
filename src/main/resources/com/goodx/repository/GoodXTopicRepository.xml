@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.goodx.repository.GoodXTopicRepository">
 	<cache/>
+	<!-- cache-ref namespace="com.goodx.repository.GoodXForumRepository"/-->
 	
 	<resultMap type="GoodXNewTopic" id="detailTopicResultMap">
 		<constructor>
@@ -87,7 +88,7 @@
 		values (#{topicTitle}, #{topicUID}, #{topicViews}, #{topicReplies}, #{topicCollections}, #{topicLikes}, #{topicTime}, #{userId})
 	</insert>
 	
-	<insert id="addSteps" useGeneratedKeys="true" keyProperty="id">
+	<insert id="addSteps" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
 		insert into goodx_steps (step_imgurl, step_content, step_order, topic_id) values
 		<foreach item="item" collection="list" separator=",">
 			(#{item.imgUrl}, #{item.content}, #{item.order}, #{item.topicId})

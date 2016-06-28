@@ -22,7 +22,7 @@ public interface GoodXTopicService {
 	
 	int addNew(GoodXTopic topic);
 	
-	void addNew(GoodXUser user, GoodXNewTopic newTopic);
+	GoodXTopic addNew(GoodXUser user, GoodXNewTopic newTopic);
 	
 	void incrementTopicViews(int id);
 	

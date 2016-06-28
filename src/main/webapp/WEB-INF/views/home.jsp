@@ -20,7 +20,7 @@
 			<div class="navbar-header clearfix">
 				<a class="navbar-brand" href="#"> WEB SITE </a>
 			</div>
-			<nav data-ng-show="feedback.success == ${fresh}">
+			<nav data-ng-show="feedback.success == false">
 				<ul class="nav nav-pills navbar-right">
 					<li role="presentation"><a href="" data-ng-click="openSignup()">注册</a></li>
 					<li role="presentation"><a href="" data-ng-click="openSignin()">登录</a></li>
@@ -28,9 +28,10 @@
 					<li role="presentation"><a href="#">微信登录</a></li>
 				</ul>
 			</nav>
-			<nav data-ng-show="feedback.success == ${rememberMe}">
+			<nav data-ng-show="feedback.success == true">
 				<ul class="nav nav-pills navbar-right">
 					<li role="presentation"><a href="" data-ng-click="switchToWrite()">发布</a></li>
+					<li role="presentation"><a href="" data-ng-click="logout()">退出</a></li>
 					<li role="presentation"><a href="#">{{feedback.message}}</a>
 				</ul>
 			</nav>
@@ -71,5 +72,6 @@
 	<script type="text/javascript" src="<c:url value='/resources/js/controllers/list.js' />"></script>
 	<script type="text/javascript" src="<c:url value='/resources/js/controllers/post.js' />"></script>
 	<script type="text/javascript" src="<c:url value='/resources/js/directives/stepBlock.js' />"></script>
+	<script type="text/javascript" src="<c:url value='/resources/js/services/session.js' />"></script>
 </body>
 </html>

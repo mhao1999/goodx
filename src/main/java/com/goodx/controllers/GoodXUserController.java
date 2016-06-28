@@ -33,6 +33,16 @@ public class GoodXUserController {
 		return "login";
 	}
 	
+	@RequestMapping(value="rememberMe", method=RequestMethod.GET)
+	public @ResponseBody GoodXLoginResult checkRememberMe() {
+		Subject currentUser = SecurityUtils.getSubject();
+		if (currentUser.isRemembered()) {
+			return new GoodXLoginResult(true, "already");
+		} else {
+			return new GoodXLoginResult(false, "fresh");
+		}
+	}
+	
 	@RequestMapping(
 			value="/login", 
 			method=RequestMethod.POST,

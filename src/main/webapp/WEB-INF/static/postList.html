@@ -1,8 +1,10 @@
 <div class="lefthalf" data-ng-controller="listController">
 
 	<div data-ng-repeat="topic in list">
-		<div class="topicList">
-			<a data-ng-click="setCurrentPostId(topic.id)">{{topic.topicTitle}}</a>
+	 	<div class="topicContainer">
+			<div class="topicList">
+				<a data-ng-click="setCurrentPostId(topic.id)" style="cursor:pointer;">{{topic.topicTitle}}</a>
+			</div>
 		</div>
 		
 	</div>

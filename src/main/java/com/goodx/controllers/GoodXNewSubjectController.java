@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.goodx.models.GoodXNewTopic;
+import com.goodx.models.GoodXTopic;
 import com.goodx.models.GoodXUser;
 import com.goodx.services.GoodXStepService;
 import com.goodx.services.GoodXTopicService;
@@ -67,14 +68,16 @@ public class GoodXNewSubjectController {
 	
 	@ResponseStatus(HttpStatus.OK)
 	@RequestMapping(value="/publish", method=RequestMethod.POST)
-	public void createNewSubject(@RequestBody GoodXNewTopic newTopic) {
+	public @ResponseBody GoodXTopic createNewSubject(@RequestBody GoodXNewTopic newTopic) {
 		Subject currentUser = SecurityUtils.getSubject();
 
-		if (currentUser.isAuthenticated() && currentUser.isPermitted("user:create"))
-		{
+		if (currentUser.isRemembered() || currentUser.isAuthenticated()) {
+		/// if (currentUser.isAuthenticated())// && currentUser.isPermitted("user:create"))
 			GoodXUser user = this.userService.getByEmail((String)currentUser.getPrincipal());
 
-			this.topicService.addNew(user, newTopic);
+			return this.topicService.addNew(user, newTopic);
 		}
+		
+		return null;
 	}
 }
